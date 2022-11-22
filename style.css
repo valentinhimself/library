@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    --body-color: rgb(245, 245, 245);
+}
+
+body{
+    background-color: var(--body-color)
+}
+
+h1{
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: white;
+    box-shadow:var(--shadow);
+}
+
+main .add__div button {
+    display: block;
+    margin: 1rem auto;
+    padding: 1rem 2.25rem;
+    border-radius: .5rem;
+    border: 1px solid rgb(120, 120, 120);
+}
+
+
+main .add__div button:hover {
+    background-color:rgb(220, 220, 220);
+}
+
