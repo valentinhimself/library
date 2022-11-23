@@ -7,6 +7,8 @@
 :root {
     --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     --body-color: rgb(245, 245, 245);
+    --submit-button-color: rgb(137, 137, 229);
+    --submit-button-color-hover: rgb(117, 117, 237);
 }
 
 body{
@@ -26,10 +28,65 @@ main .add__div button {
     padding: 1rem 2.25rem;
     border-radius: .5rem;
     border: 1px solid rgb(120, 120, 120);
+    font-size: 1rem;
 }
-
 
 main .add__div button:hover {
     background-color:rgb(220, 220, 220);
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    border: 2px solid gray;
+}
+
+form h2 {
+    text-align: center;
+    padding: 0 0 1rem 0;
+}
+form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+form > div > *:first-child {
+    order: 1;
+    font-size: 0.875rem;
+    color: rgb(78, 78, 78);
+}
+
+.isRead__div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0 0 0;
+}
+
+form div.isRead__div>label {
+    color: black;
+    font-weight: 700;
+    font-size: 1rem;
+    order: -1;
+}
+
+button[type=submit] {
+    background-color: var(--submit-button-color);
+    padding: 0.5rem 2rem;
+    border: 1px solid var(--submit-button-color);
+    border-radius: .5rem;
+    margin: 1.5rem 0 1rem 0;
+    color: white;
+    font-size: 1.125rem;
+    transition: .1s all;
+}
+
+button[type=submit]:hover {
+    background-color: var(--submit-button-color-hover);
+    border: 1px solid var(--submit-button-color-hover);
+}
