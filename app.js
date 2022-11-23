@@ -11,14 +11,27 @@ Book.prototype.output = function(){
 
 const form = document.querySelector('form');
 const addBookBtn = document.querySelector('.add__div button');
-const tint = document.querySelector('.tint')
-addBookBtn.addEventListener('click', expandForm);
+const tint = document.querySelector('.tint');
 
-function expandForm() {
+addBookBtn.addEventListener('click', expandForm);
+tint.addEventListener('click', collapseForm);
+
+
+function expandForm(e) {
+    e.stopPropagation();
     form.classList.add('scale');
     applyTint();
 }
 
 function applyTint() {
     tint.classList.add('opacity');
+}
+
+function removeTint() {
+    tint.classList.remove('opacity');
+}
+
+function collapseForm() {
+    form.classList.remove('scale');
+    removeTint();
 }
