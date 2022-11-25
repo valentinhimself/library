@@ -19,8 +19,11 @@ tint.addEventListener('click', collapseForm);
 
 function expandForm(e) {
     e.stopPropagation();
-    form.classList.add('scale');
-    applyTint();
+    form.style.display = 'flex';
+    setTimeout(() =>{
+        form.classList.add('scale');
+        applyTint();
+    },10)
 }
 
 function applyTint() {
@@ -34,4 +37,16 @@ function removeTint() {
 function collapseForm() {
     form.classList.remove('scale');
     removeTint();
+    setTimeout(changeDisplay, 700);
 }
+
+function changeDisplay() {
+    if (form.getBoundingClientRect().height == 0) {
+        form.style.display = 'none';
+    }
+}
+
+
+window.onload = () => {
+    collapseForm()
+};

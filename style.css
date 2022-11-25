@@ -9,6 +9,10 @@
     --body-color: rgb(245, 245, 245);
     --submit-button-color: rgb(137, 137, 229);
     --submit-button-color-hover: rgb(117, 117, 237);
+    --remove-btn-color: rgb(205, 205, 205);
+    --read-toggle-color: rgb(203, 75, 75);
+    --remove-btn-color-hover: rgb(192, 192, 192);
+    --read-toggle-color-hover: rgb(214, 68, 68);
 }
 
 body{
@@ -33,6 +37,8 @@ main .add__div button {
     border-radius: .5rem;
     border: 1px solid rgb(120, 120, 120);
     font-size: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 main .add__div button:hover {
@@ -51,6 +57,7 @@ form {
     scale: 0;
     transition: .7s all;
     position: absolute;
+    z-index: 3;
     top: 0;
     left: 0;
     right: 0;
@@ -119,4 +126,49 @@ button[type=submit] {
 button[type=submit]:hover {
     background-color: var(--submit-button-color-hover);
     border: 1px solid var(--submit-button-color-hover);
+}
+
+.grid-book-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 1rem;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    gap: .5rem;
+}
+
+.read-toggle {
+    background-color: var(--read-toggle-color);
+    border: 1px solid var(--read-toggle-color);
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    color: white;
+}
+
+.remove-btn {
+    background-color: var(--remove-btn-color);
+    border: 1px solid var(--remove-btn-color);
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    color: white;
+}
+
+.read-toggle:hover {
+    background-color: var(--read-toggle-color-hover);
+    border: 1px solid var(--read-toggle-color-hover);
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+}
+
+.remove-btn:hover {
+    background-color: var(--remove-btn-color-hover);
+    border: 1px solid var(--remove-btn-color-hover);
+    padding: .5rem 2rem;
+    border-radius: .5rem;
 }
