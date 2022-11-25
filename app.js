@@ -2,6 +2,23 @@ const form = document.querySelector('form');
 const addBookBtn = document.querySelector('.add__div button');
 const tint = document.querySelector('.tint');
 
+const formBookName = document.querySelector('#book-name');
+const formBookAuthor = document.querySelector('#author-name');
+const formBookPages = document.querySelector('#num-pages');
+const formCheckBox = document.querySelector('#isBookRead');
+
+const submitBtn = document.querySelector('.submit-btn');
+const bookDisplay = document.querySelector('.grid-book-display');
+
+let book1;
+
+function createBook(e) {
+    e.preventDefault();
+    collapseForm();
+    book1 = new Book(formBookName.value, formBookAuthor.value, formBookPages.value, formCheckBox.checked);
+    createHTMLStructure();
+}
+
 function expandForm(e) {
     e.stopPropagation();
     form.style.display = 'flex';
@@ -25,6 +42,25 @@ function collapseForm() {
     setTimeout(changeDisplay, 700);
 }
 
+function createHTMLStructure() {
+    let gridItem = document.createElement('div');
+    let bookTitle = document.createElement('span');
+    let bookAuthor = document.createElement('span');
+    let bookPages = document.createElement('span');
+    let readBtn = document.createElement('button');
+    let removeBtn = document.createElement('button');
+
+    gridItem.classList.add('grid-item')
+    bookTitle.classList.add('book-title');
+    bookAuthor.classList.add('book-author');
+    bookPages.classList.add('book-pages');
+    readBtn.classList.add('read-toggle');
+    removeBtn.classList.add('remove-btn');
+
+    bookDisplay.append(gridItem);
+    gridItem.append(bookTitle, bookAuthor, bookPages, readBtn, removeBtn);
+}
+
 function changeDisplay() {
     if (form.getBoundingClientRect().height == 0) {
         form.style.display = 'none';
@@ -33,9 +69,10 @@ function changeDisplay() {
 
 addBookBtn.addEventListener('click', expandForm);
 tint.addEventListener('click', collapseForm);
+submitBtn.addEventListener('click', createBook);
 
 window.onload = () => {
-    collapseForm()
+    collapseForm();
 };
 
 function Book(name, author, pages, read) {
