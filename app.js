@@ -10,14 +10,18 @@ const formCheckBox = document.querySelector('#isBookRead');
 const submitBtn = document.querySelector('.submit-btn');
 const bookDisplay = document.querySelector('.grid-book-display');
 
-let book1;
+let libraryArray = [];
 
 function createBook(e) {
     e.preventDefault();
     collapseForm();
-    book1 = new Book(formBookName.value, formBookAuthor.value, formBookPages.value, formCheckBox.checked);
+    addBookToArray()
     createHTMLStructure();
     resetForm();
+}
+
+function addBookToArray(){
+    libraryArray[libraryArray.length] = new Book(formBookName.value, formBookAuthor.value, formBookPages.value, formCheckBox.checked);
 }
 
 function expandForm(e) {
