@@ -17,6 +17,7 @@ function createBook(e) {
     collapseForm();
     book1 = new Book(formBookName.value, formBookAuthor.value, formBookPages.value, formCheckBox.checked);
     createHTMLStructure();
+    resetForm();
 }
 
 function expandForm(e) {
@@ -42,6 +43,13 @@ function collapseForm() {
     setTimeout(changeDisplay, 700);
 }
 
+function resetForm() {
+    formBookName.value = '';
+    formBookAuthor.value = '';
+    formBookPages.value = '';
+    formCheckBox.checked = false;
+}
+
 function createHTMLStructure() {
     let gridItem = document.createElement('div');
     let bookTitle = document.createElement('span');
@@ -56,6 +64,18 @@ function createHTMLStructure() {
     bookPages.classList.add('book-pages');
     readBtn.classList.add('read-toggle');
     removeBtn.classList.add('remove-btn');
+
+    bookTitle.textContent = formBookName.value;
+    bookAuthor.textContent = formBookAuthor.value;
+    bookPages.textContent = formBookPages.value;
+    removeBtn.textContent = 'Remove';
+    
+    if (formCheckBox.checked) {
+        readBtn.textContent = "Read";
+    } 
+    else {
+        readBtn.textContent = "Not Read"
+    }
 
     bookDisplay.append(gridItem);
     gridItem.append(bookTitle, bookAuthor, bookPages, readBtn, removeBtn);
