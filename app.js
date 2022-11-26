@@ -23,6 +23,7 @@ function createBook(e) {
 function expandForm(e) {
     e.stopPropagation();
     form.style.display = 'flex';
+    bookDisplay.style.zIndex = ''; 
     setTimeout(() =>{
         form.classList.add('scale');
         applyTint();
@@ -40,7 +41,7 @@ function removeTint() {
 function collapseForm() {
     form.classList.remove('scale');
     removeTint();
-    setTimeout(changeDisplay, 700);
+    setTimeout(debugPageInteractions, 700);
 }
 
 function resetForm() {
@@ -81,9 +82,10 @@ function createHTMLStructure() {
     gridItem.append(bookTitle, bookAuthor, bookPages, readBtn, removeBtn);
 }
 
-function changeDisplay() {
+function debugPageInteractions() {
     if (form.getBoundingClientRect().height == 0) {
         form.style.display = 'none';
+        bookDisplay.style.zIndex = 1;
     }
 }
 
