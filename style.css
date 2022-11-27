@@ -13,6 +13,9 @@
     --read-toggle-color: rgb(203, 75, 75);
     --remove-btn-color-hover: rgb(192, 192, 192);
     --read-toggle-color-hover: rgb(214, 68, 68);
+    --read-toggle-color-read: rgb(42, 174, 40);
+    --read-toggle-color-read-hover: rgb(26, 149, 24);
+
 }
 
 body{
@@ -150,6 +153,16 @@ button[type=submit]:hover {
     padding: .5rem 2rem;
     border-radius: .5rem;
     color: white;
+}
+
+.read-toggle.read {
+    background-color: var(--read-toggle-color-read);
+    border: 1px solid var(--read-toggle-color-read);
+}
+
+.read-toggle.read:hover {
+    background-color: var(--read-toggle-color-read-hover);
+    border: 1px solid var(--read-toggle-color-read-hover);
 }
 
 .remove-btn {

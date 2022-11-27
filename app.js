@@ -79,36 +79,58 @@ function createHTMLStructure() {
     gridItem.append(bookTitle, bookAuthor, bookPages, readBtn, removeBtn);
     setReadBtnText(); 
  
+    readBtn.addEventListener('click', changeReadStatus);
     removeBtn.addEventListener('click', removeBook);
 }
 
-    function removeBook(e) {
-        removeFromDOM(e);
-        removeFromArray(e);
-    }
+function removeBook(e) {
+    removeFromDOM(e);
+    removeFromArray(e);
+}
 
-    function removeFromDOM(e) {
-        e.target.parentNode.remove();
-    }
+function removeFromDOM(e) {
+    e.target.parentNode.remove();
+}
 
-    function removeFromArray(e) {
-        let bookNameDOM = e.target.parentNode.querySelector('h3');
-        libraryArray = libraryArray.filter(book => {
-            return book.name != bookNameDOM.textContent;
-        });
-    }
+function getBookNameFromDOM(e) {
+    return e.target.parentNode.querySelector('h3').textContent;
+}
 
+function removeFromArray(e) {
+    let bookNameDOM = getBookNameFromDOM(e);
+    libraryArray = libraryArray.filter(book => {
+        return book.name != bookNameDOM;
+    });
+}
+
+function changeReadStatus(e) {
+    let bookObjFromArray = libraryArray.find(book => book.name = getBookNameFromDOM(e));
+    bookObjFromArray.read = !bookObjFromArray.read;
+    
+    if (bookObjFromArray.read) {
+        e.target.textContent ='Read';
+        e.target.classList.add('read');
+    } else {
+        e.target.textContent = 'Not Read';
+        e.target.classList.remove('read');
+    }
+}
 let readBtns;
 
 function setReadBtnText() {
     readBtns = Array.from(document.querySelectorAll('.read-toggle'));
     let currentBtn = readBtns[readBtns.length-1];
-    if (isRead()) currentBtn.textContent = "Read";
-    else currentBtn.textContent = "Not Read";   
+    if (isRead()) {
+        currentBtn.textContent = "Read";
+        currentBtn.classList.add('read');
+    } else {
+        currentBtn.textContent = "Not Read";
+        currentBtn.classList.remove('read')
+    }   
 }
 
 function isRead() {
-    return formCheckBox.checked
+    return libraryArray[libraryArray.length-1].read
 }
 
 function debugPageInteractions() {
