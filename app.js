@@ -57,7 +57,7 @@ function resetForm() {
 
 function createHTMLStructure() {
     let gridItem = document.createElement('div');
-    let bookTitle = document.createElement('span');
+    let bookTitle = document.createElement('h3');
     let bookAuthor = document.createElement('span');
     let bookPages = document.createElement('span');
     let readBtn = document.createElement('button');
@@ -78,9 +78,25 @@ function createHTMLStructure() {
     bookDisplay.append(gridItem);
     gridItem.append(bookTitle, bookAuthor, bookPages, readBtn, removeBtn);
     setReadBtnText(); 
-
-    readBtn.addEventListener('click', () => readBtn.style.backgroundColor = 'green');
+ 
+    removeBtn.addEventListener('click', removeBook);
 }
+
+    function removeBook(e) {
+        removeFromDOM(e);
+        removeFromArray(e);
+    }
+
+    function removeFromDOM(e) {
+        e.target.parentNode.remove();
+    }
+
+    function removeFromArray(e) {
+        let bookNameDOM = e.target.parentNode.querySelector('h3');
+        libraryArray = libraryArray.filter(book => {
+            return book.name != bookNameDOM.textContent;
+        });
+    }
 
 let readBtns;
 
