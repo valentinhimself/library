@@ -74,16 +74,25 @@ function createHTMLStructure() {
     bookAuthor.textContent = formBookAuthor.value;
     bookPages.textContent = formBookPages.value;
     removeBtn.textContent = 'Remove';
-    
-    if (formCheckBox.checked) {
-        readBtn.textContent = "Read";
-    } 
-    else {
-        readBtn.textContent = "Not Read"
-    }
 
     bookDisplay.append(gridItem);
     gridItem.append(bookTitle, bookAuthor, bookPages, readBtn, removeBtn);
+    setReadBtnText(); 
+
+    readBtn.addEventListener('click', () => readBtn.style.backgroundColor = 'green');
+}
+
+let readBtns;
+
+function setReadBtnText() {
+    readBtns = Array.from(document.querySelectorAll('.read-toggle'));
+    let currentBtn = readBtns[readBtns.length-1];
+    if (isRead()) currentBtn.textContent = "Read";
+    else currentBtn.textContent = "Not Read";   
+}
+
+function isRead() {
+    return formCheckBox.checked
 }
 
 function debugPageInteractions() {
