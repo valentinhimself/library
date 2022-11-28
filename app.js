@@ -88,7 +88,7 @@ function createHTMLStructure() {
 
     bookTitle.textContent = formBookName.value;
     bookAuthor.textContent = formBookAuthor.value;
-    bookPages.textContent = formBookPages.value;
+    bookPages.textContent = `${formBookPages.value} pages`;
     removeBtn.textContent = 'Remove';
 
     bookDisplay.append(gridItem);
