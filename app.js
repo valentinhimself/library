@@ -28,6 +28,7 @@ function expandForm(e) {
     e.stopPropagation();
     form.style.display = 'flex';
     bookDisplay.style.zIndex = ''; 
+    tint.style.display = '';
     setTimeout(() =>{
         form.classList.add('scale');
         applyTint();
@@ -137,6 +138,7 @@ function debugPageInteractions() {
     if (form.getBoundingClientRect().height == 0) {
         form.style.display = 'none';
         bookDisplay.style.zIndex = 1;
+        tint.style.display = 'none';
     }
 }
 

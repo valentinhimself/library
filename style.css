@@ -145,6 +145,8 @@ button[type=submit]:hover {
     text-align: center;
     padding: 1rem;
     gap: .5rem;
+    background: #eeeeee;
+    border-radius: 1rem;
 }
 
 .read-toggle {
