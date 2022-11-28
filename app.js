@@ -160,6 +160,7 @@ function debugPageInteractions() {
 addBookBtn.addEventListener('click', expandForm);
 tint.addEventListener('click', collapseForm);
 submitBtn.addEventListener('click', createBook);
+submitBtn.addEventListener('keydown', createBook);
 
 window.onload = () => {
     collapseForm();
