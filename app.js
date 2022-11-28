@@ -1,6 +1,7 @@
 const form = document.querySelector('form');
 const addBookBtn = document.querySelector('.add__div button');
 const tint = document.querySelector('.tint');
+const error = document.querySelector('.error');
 
 const formBookName = document.querySelector('#book-name');
 const formBookAuthor = document.querySelector('#author-name');
@@ -14,14 +15,28 @@ let libraryArray = [];
 
 function createBook(e) {
     e.preventDefault();
-    collapseForm();
-    addBookToArray()
-    createHTMLStructure();
-    resetForm();
+    if (isInArray()) {
+        error.classList.add('show');
+    }
+    else {
+        collapseForm();
+        addBookToArray()
+        createHTMLStructure();
+        resetForm();
+        error.classList.remove('show');
+    }
 }
 
 function addBookToArray(){
     libraryArray[libraryArray.length] = new Book(formBookName.value, formBookAuthor.value, formBookPages.value, formCheckBox.checked);
+}
+
+function isInArray() {
+    let flag = false;
+    libraryArray.find(book => {
+        if (book.name == formBookName.value) flag = true;
+    });
+    return flag;
 }
 
 function expandForm(e) {

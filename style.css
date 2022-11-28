@@ -105,7 +105,7 @@ form > div > *:first-child {
     flex-direction: row;
     justify-content: center;
     gap: 0.5rem;
-    padding: 1rem 0 0 0;
+    padding: .5rem 0 0 0;
 }
 
 form div.isRead__div>label {
@@ -187,4 +187,15 @@ button[type=submit]:hover {
     border: 1px solid var(--remove-btn-color-hover);
     padding: .5rem 2rem;
     border-radius: .5rem;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin: .25rem 0;
+    display: none;
+}
+
+.error.show {
+    display: block;
 }
